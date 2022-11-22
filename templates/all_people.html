@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>All People</title>
+</head>
+<body>
+  <h1>All People</h1>
+  <a href="{% url 'add_person' %}">Add person</a>
+  {% if message %}
+    <b>{{ message }}</b>
+  {% endif %}
+
+  {% if people %}
+    <ul>
+    {% for p in people %}
+      <li>
+        <a href="{% url 'person_details' id=p.id %}">{{ p.full_name }}</a>
+        <button><a href="{% url 'update_person' id=p.id %}">Update</a></button>
+        <button><a href="{% url 'delete_person' id=p.id %}">Delete</a></button>
+      </li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <h3>There are no other poeple, buddy...</h3>
+  {% endif %}
+
+</body>
+</html>

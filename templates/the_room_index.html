@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Room Service</title>
+</head>
+<body>
+  <h1>All Rooms</h1>
+  <a href="{% url 'add_room' %}">Add room</a>
+  {% if message %}
+    <b>{{ message }}</b>
+  {% endif %}
+
+  {% if rooms %}
+    <ul>
+    {% for room in rooms %}
+      <li>
+        <a href="{% url 'room_details' id=p.id %}">{{ room.name }}</a>
+        <button><a href="{% url 'update_room' id=room.id %}">Update</a></button>
+        <button><a href="{% url 'delete_room' id=room.id %}">Delete</a></button>
+      </li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <h3>There are no other rooms, bad luck...</h3>
+  {% endif %}
+
+
+Room Web Service provided by luksi02.
+</body>
+</html>
